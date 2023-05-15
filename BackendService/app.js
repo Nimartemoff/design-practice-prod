@@ -12,7 +12,7 @@ const PORT = process.env.PORT || 3001;
 app.set('views', path.join(__dirname, 'views'));
 app.set('view engine', 'ejs');
 
-app.use(cors({ origin: 'http://localhost:3000' }));
+app.use(cors({ origin: '*' }));
 
 app.use('/vacancy', vacancyRouter);
 
