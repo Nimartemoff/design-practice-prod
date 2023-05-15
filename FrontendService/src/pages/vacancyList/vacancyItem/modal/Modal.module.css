@@ -1,0 +1,29 @@
+.Perc{
+    
+}
+
+.Functions {
+    border: 1px solid black;
+    border-radius: 5px;
+    padding: 10px;
+    background-color: #F0F0F0;
+    width: 100%;
+}
+
+
+.Title{
+    font-weight: bold;
+}
+
+.Circle{
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    margin-bottom: 15px;
+}
+
+.Footer{
+    display: flex;
+    justify-content: space-between;
+}
+

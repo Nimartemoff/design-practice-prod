@@ -1,0 +1,18 @@
+
+.progress {
+    margin-left: 20%;
+    margin-right: 20%;
+    height: 20px;
+    border-radius: 10px;
+    margin-bottom: 10px;
+    color: #F7F7F7;
+  
+  }
+  .progress-bar {
+    font-weight: bold;
+  }
+  
+  .prec{
+    font-weight: bold;
+    margin: auto;
+  }
