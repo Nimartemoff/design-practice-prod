@@ -9,7 +9,7 @@ import { Form } from 'react-bootstrap';
 
 import styles from './HomePage.module.css';
 
-const BASE_URL = 'http://localhost:3001/vacancy/';
+const BASE_URL = 'http://app:3001/vacancy/';
 
 const HomePage = (props) => {
     const [asc, setAsc] = useState(true);
