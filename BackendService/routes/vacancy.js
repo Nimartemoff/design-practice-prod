@@ -4,7 +4,7 @@ var router = express.Router();
 const pgp = require('pg-promise')();
 const db = pgp(`postgres://postgres:${process.env.DB_PASSWORD}@db:5432/vacancies`);
 
-const VACANCIES_PER_PAGE = 30;
+const VACANCIES_PER_PAGE = 20;
 
 router.get('/', function(req, res, next) {
   let page = parseInt(req.query.p);
@@ -37,17 +37,22 @@ router.get('/', function(req, res, next) {
       res.sendStatus(404);
       return;
     }
-    db.any(`SELECT company.img_href, vacancy.title, company.name, vacancy.automation_percent, vacancy.date, vacancy.id 
+    db.any(`SELECT DISTINCT company.img_href, vacancy.title, company.name, vacancy.automation_percent, vacancy.date, vacancy.id 
           FROM vacancy LEFT OUTER JOIN company 
           ON vacancy.company_id = company.id 
           ORDER BY ${sortKeySQLParam} ${sortAscSQLParam} 
           LIMIT ${count} 
           OFFSET ${(Number(page)-1) * count}`)
-         .then(data => res.json({
+         .then(data => {console.log(`SELECT company.img_href, vacancy.title, company.name, vacancy.automation_percent, vacancy.date, vacancy.id 
+         FROM vacancy LEFT OUTER JOIN company 
+         ON vacancy.company_id = company.id 
+         ORDER BY ${sortKeySQLParam} ${sortAscSQLParam} 
+         LIMIT ${count} 
+         OFFSET ${(Number(page)-1) * count}`);res.json({
           "page": page,
           "pageCount": pageCount,
           "data": data
-         }))
+         })})
          .catch(err => next(err));
   }).catch(err => next(err));
 });

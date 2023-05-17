@@ -19,7 +19,7 @@ const CustomModal = ({show, handleClose, title, data, id, avt }) => {
     const fetchData = async () => {
       setLoading(true);
       try {
-        const response = await axios.get(`http://app:3001/vacancy/${id}`);
+        const response = await axios.get(`http://localhost:3001/vacancy/${id}`);
         setModalData(response.data[0]);
         console.log(response.data[0]?.functions);
       } catch (error) {
