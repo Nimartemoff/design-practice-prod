@@ -1,5 +1,5 @@
 BackendService/node_modules/
 FrontendService/node_modules/
-FrontendServie/build/
-FlaskService1/__pycache__
-FlaskService1/.venv
+FrontendService/build/
+FlaskService/__pycache__
+FlaskService/.venv
