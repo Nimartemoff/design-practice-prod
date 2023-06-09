@@ -2,6 +2,7 @@ var createError = require('http-errors');
 var express = require('express');
 var path = require('path');
 const cors = require('cors');
+var http = require('http');
 
 var vacancyRouter = require('./routes/vacancy');
 
@@ -33,5 +34,14 @@ app.use(function(err, req, res, next) {
 });
 
 app.listen(PORT, console.log(`Server starts at port ${PORT}`));
+
+var dataUpdater = http.request('http://127.0.0.1:5000/', res => {
+  if (('' + res.statusCode).match(/^2\d\d$/)) {
+    console.log("Data in db was updated");
+  }
+});
+
+dataUpdater.on('error', e => console.log(e));
+
 
 module.exports = app;
