@@ -37,3 +37,14 @@ services:
     ports:
       - 5432:5432
     restart: always
+  flask:
+    build:
+      context: ./FlaskService
+    tty: true
+    working_dir: /flask
+    env_file:
+      - .env
+    expose:
+      - '5000'
+    ports:
+      - 5000:5000
